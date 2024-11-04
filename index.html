@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifizierte Webseite</title>
+    <style>
+        /* Reset default margins and ensure full viewport coverage */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Container for the iframe */
+        .frame-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Fullscreen iframe */
+        #content-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Custom CSS that will be injected into the iframe */
+        #custom-styles {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame-container">
+        <iframe id="content-frame"></iframe>
+    </div>
+
+    <script>
+        const frame = document.getElementById('content-frame');
+        
+        // URL der einzubettenden Seite hier einfügen
+        frame.src = 'IHRE_URL_HIER';
+        
+        frame.onload = function() {
+            try {
+                // Eigenes CSS zur eingebetteten Seite hinzufügen
+                const customCSS = `
+                    /* Hier Ihr eigenes CSS einfügen */
+                    body {
+                        background-color: #f0f0f0;
+                    }
+                    
+                    /* Weitere CSS-Regeln */
+                    h1 {
+                        color: #333;
+                        font-family: Arial, sans-serif;
+                    }
+                `;
+                
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = customCSS;
+                frame.contentDocument.head.appendChild(styleSheet);
+                
+            } catch (error) {
+                console.error('Fehler beim Hinzufügen des CSS:', error);
+            }
+        };
+    </script>
+</body>
+</html>
