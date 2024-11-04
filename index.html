@@ -3,109 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Modified</title>
+    <title>YouTube</title>
     <style>
-        /* Reset und Vollbild-Layout */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #0f0f0f;
         }
 
-        /* Container für den YouTube iframe */
-        .youtube-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        iframe {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Kopfzeile mit Suchfeld */
-        .header {
-            background-color: #0f0f0f;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Suchfeld-Styling */
-        #search-input {
-            padding: 8px 15px;
-            width: 300px;
-            border: 1px solid #303030;
-            border-radius: 20px;
-            background-color: #121212;
-            color: white;
-            font-size: 16px;
-        }
-
-        #search-input:focus {
-            outline: none;
-            border-color: #1c62b9;
-        }
-
-        /* Such-Button */
-        #search-button {
-            padding: 8px 20px;
-            background-color: #303030;
             border: none;
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        #search-button:hover {
-            background-color: #404040;
-        }
-
-        /* YouTube iframe */
-        #youtube-frame {
-            flex-grow: 1;
-            border: none;
-            width: 100%;
-            height: calc(100% - 60px);
         }
     </style>
 </head>
 <body>
-    <div class="youtube-container">
-        <div class="header">
-            <input type="text" id="search-input" placeholder="YouTube durchsuchen...">
-            <button id="search-button">Suchen</button>
-        </div>
-        <iframe 
-            id="youtube-frame"
-            src="https://www.youtube.com"
-            allowfullscreen
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe>
-    </div>
-
-    <script>
-        // Suchfunktion
-        function performSearch() {
-            const searchTerm = document.getElementById('search-input').value;
-            if (searchTerm) {
-                const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchTerm)}`;
-                document.getElementById('youtube-frame').src = searchUrl;
-            }
-        }
-
-        // Event-Listener für Suche
-        document.getElementById('search-button').addEventListener('click', performSearch);
-        document.getElementById('search-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-    </script>
+    <iframe 
+        src="https://www.youtube.com"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    ></iframe>
 </body>
 </html>
